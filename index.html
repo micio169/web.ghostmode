@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Mode | LoL 프라이버시 솔루션</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lol: {
+                            dark: '#050505',
+                            card: '#0c0c0e',
+                            border: '#1e1e22',
+                            gold: '#c89b3c',
+                            goldHover: '#f0e6d2',
+                            blue: '#0ac8b9',
+                            red: '#ef4444',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&family=Fira+Code&display=swap');
+        body { background-color: #050505; color: #f0f0f0; overflow-x: hidden; }
+        .glass { background: rgba(12, 12, 14, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .gradient-text { background: linear-gradient(135deg, #c89b3c 0%, #f0e6d2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        @keyframes pulse-blue { 0%, 100% { box-shadow: 0 0 5px rgba(10, 200, 185, 0.7); } 50% { box-shadow: 0 0 20px rgba(10, 200, 185, 0.9); } }
+        .status-pulse-blue { animation: pulse-blue 2s infinite; }
+        html { scroll-behavior: smooth; }
+        /* 드롭다운 옵션 배경색 고정 */
+        select option { background-color: #0c0c0e; color: white; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-lol-gold/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
+
+    <nav class="fixed top-0 left-0 w-full z-50 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-black italic gradient-text tracking-tighter">GHOST MODE</div>
+            <div class="flex items-center gap-6 text-sm text-gray-400">
+                <select id="lang-select" class="bg-transparent border border-gray-800 rounded px-2 py-1 outline-none text-xs focus:border-lol-gold transition cursor-pointer">
+                    <option value="ko">KO</option>
+                    <option value="en">EN</option>
+                </select>
+                <a href="#how-it-works" data-lang="nav_how" class="hover:text-lol-gold transition">작동 원리</a>
+                <a href="#safety" data-lang="nav_safe" class="hover:text-lol-gold transition">보안 안내</a>
+                <a href="#download" data-lang="nav_down" class="bg-lol-gold text-black px-5 py-2 rounded-full font-bold hover:bg-lol-goldHover transition duration-300 transform hover:scale-105">다운로드</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-40 pb-24 text-center z-10 px-6 overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-block px-4 py-1 rounded-full border border-lol-gold/30 text-lol-gold text-xs font-mono mb-4 uppercase tracking-widest">
+                League of Legends Privacy Tool
+            </div>
+            <h1 data-lang="hero_title" class="text-6xl md:text-7xl font-black tracking-tighter mb-6 leading-tight">
+                로그아웃 없이,<br><span class="gradient-text">완벽한 오프라인 전환</span>
+            </h1>
+            <p data-lang="hero_desc" class="text-xl text-gray-400 mb-12 font-light max-w-2xl mx-auto leading-relaxed">
+                친구 목록에는 '오프라인'으로, 실제로는 전장에. <br>
+                누구의 방해 없이, 오직 당신의 게임에만 집중하세요.
+            </p>
+            
+            <div class="glass max-w-sm mx-auto p-8 rounded-3xl shadow-2xl border border-white/10 transform hover:rotate-1 transition-transform duration-500">
+                <div class="flex items-center justify-between mb-10">
+                    <div class="flex flex-col items-start">
+                        <span class="text-xs font-mono text-gray-500 uppercase tracking-wider">Current Status</span>
+                        <span class="text-3xl font-extrabold text-lol-blue tracking-tight">ONLINE</span>
+                    </div>
+                    <div class="w-5 h-5 rounded-full bg-lol-blue status-pulse-blue"></div>
+                </div>
+                <a href="#download" data-lang="btn_switch" class="block w-full bg-lol-gold text-black py-4 rounded-xl font-bold text-lg hover:bg-lol-goldHover transition-all duration-300 shadow-lg shadow-lol-gold/20 text-center">
+                    오프라인으로 전환
+                </a>
+                <div class="mt-4 text-xs text-gray-600 font-mono">Ghost Mode v1.0.0 Ready</div>
+            </div>
+        </div>
+    </header>
+
+    <section id="how-it-works" class="py-28 px-6 bg-lol-card relative z-10 border-y border-lol-border">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 data-lang="how_title" class="text-4xl font-black mb-4 tracking-tight">어떻게 작동하나요?</h2>
+                <p data-lang="how_desc" class="text-gray-400">시스템을 건드리지 않는 안전한 네트워크 제어 방식을 사용합니다.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="glass p-10 rounded-3xl border-dashed border-lol-border flex flex-col items-center gap-6 font-mono text-sm relative">
+                    <div class="absolute inset-0 bg-lol-gold/5 blur-3xl rounded-full"></div>
+                    <div class="relative z-10 p-4 border border-lol-blue/50 rounded-xl bg-lol-dark text-lol-blue w-40 text-center">Game Client</div>
+                    <div class="relative z-10 text-gray-700 text-2xl">↕</div>
+                    <div class="relative z-10 p-5 border-2 border-lol-red bg-lol-red/10 rounded-2xl text-lol-red font-bold w-56 text-center shadow-lg shadow-lol-red/20">
+                        Firewall Block<br>
+                        <span class="text-xs font-normal text-lol-red/80"></span>
+                    </div>
+                    <div class="relative z-10 text-gray-700 text-2xl">↕</div>
+                    <div class="relative z-10 p-4 border border-lol-border rounded-xl bg-lol-dark text-gray-600 w-40 text-center">Chat Server</div>
+                </div>
+
+                <div class="space-y-10">
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-lol-gold/10 flex items-center justify-center border border-lol-gold/20">
+                            <span class="text-2xl font-bold text-lol-gold">01</span>
+                        </div>
+                        <div>
+                            <h4 data-lang="step1_t" class="text-xl font-bold mb-2">채팅 서버 IP 차단</h4>
+                            <p data-lang="step1_d" class="text-gray-400 leading-relaxed text-sm">윈도우 방화벽 규칙을 이용해 리그 오브 레전드의 <span class="text-white">채팅 서버 IP</span>만 일시적으로 차단합니다.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-lol-gold/10 flex items-center justify-center border border-lol-gold/20">
+                            <span class="text-2xl font-bold text-lol-gold">02</span>
+                        </div>
+                        <div>
+                            <h4 data-lang="step2_t" class="text-xl font-bold mb-2">계정 및 파일 보안</h4>
+                            <p data-lang="step2_d" class="text-gray-400 leading-relaxed text-sm">게임의 실행 파일(.exe)이나 메모리를 수정하는 '치트' 방식이 아니므로 뱅가드(Vanguard) 탐지 및 계정 정지 위험이 없습니다.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-lol-gold/10 flex items-center justify-center border border-lol-gold/20">
+                            <span class="text-2xl font-bold text-lol-gold">03</span>
+                        </div>
+                        <div>
+                            <h4 data-lang="step3_t" class="text-xl font-bold mb-2">독립된 네트워크</h4>
+                            <p data-lang="step3_d" class="text-gray-400 leading-relaxed text-sm">채팅 서버와 게임 서버는 분리되어 있습니다. 오프라인 모드 중에도 인게임 플레이 지연율(Ping)은 0ms로 완벽하게 유지됩니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="safety" class="py-24 px-6 z-10 relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass p-10 rounded-3xl border border-lol-red/20 shadow-2xl shadow-lol-red/5">
+                <div class="flex items-center gap-4 mb-8 border-b border-lol-border pb-6">
+                    <div class="w-12 h-12 rounded-full bg-lol-red/10 flex items-center justify-center text-lol-red text-3xl">⚠️</div>
+                    <h3 data-lang="safety_title" class="text-2xl font-black text-lol-red tracking-tight">백신 오진 및 보안 안내</h3>
+                </div>
+                <div id="safety-content" class="space-y-5 text-gray-300 text-sm md:text-base leading-relaxed font-light">
+                    <p data-lang="safety_p1">본 프로그램은 <strong class="text-white font-bold">윈도우 시스템의 방화벽 규칙을 동적으로 제어</strong>하는 기능을 포함하고 있습니다.</p>
+                    <p data-lang="safety_p2">이 과정에서 일부 백신(Windows Defender 등)이 프로그램의 출처가 불분명하거나 시스템 설정을 변경하려 한다고 판단하여 <span class="text-lol-red font-semibold">'차단 알림'</span> 또는 <span class="text-lol-red font-semibold">'위협 탐지'</span> 메시지를 표시할 수 있습니다.</p>
+                    <p data-lang="safety_box" class="bg-lol-dark p-5 rounded-xl border border-lol-border text-gray-400 text-sm">이는 시스템 권한을 사용하는 네트워크 관리 도구에서 흔히 발생하는 <strong class="text-white font-semibold">'오진(False Positive)'</strong> 현상이며, 본 프로그램은 어떠한 경우에도 사용자의 개인정보를 수집하거나 해로운 파일을 설치하지 않음을 약속드립니다.</p>
+                    <div class="pt-6 flex flex-wrap gap-x-8 gap-y-3 text-xs font-mono text-gray-500 uppercase tracking-widest justify-center">
+                        <span class="text-green-500 font-bold">✓ VirusTotal Clean</span>
+                        <span class="text-green-500 font-bold">✓ No Memory Injection</span>
+                        <span class="text-green-500 font-bold">✓ Network Level Control</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="py-28 px-6 bg-lol-card relative z-10 border-t border-lol-border bg-gradient-to-b from-lol-card to-black">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-block px-3 py-1 bg-lol-gold/10 rounded text-lol-gold text-xs mb-4 font-mono">LATEST STABLE VERSION</div>
+            <h2 data-lang="down_title" class="text-5xl font-black mb-12 tracking-tighter leading-tight">지금 바로 <span class="gradient-text">비밀스럽게</span><br>게임을 즐기세요.</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <div class="bg-white text-black p-10 rounded-3xl flex flex-col items-center justify-between transform hover:scale-[1.03] transition-transform duration-300 shadow-2xl">
+                    <div>
+                        <div class="text-5xl mb-6">💾</div>
+                        <h4 class="text-2xl font-black mb-2 text-black tracking-tight">Installer (EXE)</h4>
+                        <p data-lang="down_exe_p" class="text-gray-600 text-sm">가장 빠르고 간편한 자동 설치 방식</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1WGN6OLA-5uBYfU5lZDoHy3uThmMKDi3o/view?usp=drive_link" data-lang="down_exe_btn" class="block mt-10 w-full bg-black text-white py-4 rounded-xl font-bold text-lg hover:bg-gray-800 transition duration-300 text-center">
+                        v1.0.0 다운로드
+                    </a>
+                </div>
+
+                <div class="glass p-10 rounded-3xl flex flex-col items-center justify-between transform hover:scale-[1.03] transition-transform duration-300 border-lol-border hover:border-lol-gold/30">
+                    <div>
+                        <div class="text-5xl mb-6">📦</div>
+                        <h4 class="text-2xl font-black mb-2 tracking-tight">Portable (ZIP)</h4>
+                        <p data-lang="down_zip_p" class="text-gray-400 text-sm">설치 없이 바로 실행 가능한 무설치판</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1Ax-OPCrUX4mNoovOtTfnh9QIrLBLqIdO/view?usp=sharing" data-lang="down_zip_btn" class="block mt-10 w-full bg-lol-border text-white py-4 rounded-xl font-bold text-lg hover:bg-gray-700 transition duration-300 text-center">
+                        파일 내려받기
+                    </a>
+                </div>
+            </div>
+            
+            <p class="mt-12 text-gray-600 text-xs font-mono leading-relaxed">
+                Supported OS: Windows 10, 11 (64-bit) <br>
+                SHA-256: 38bb42d1572954d0e2a48de2c8ea1941f24cd990c9f6d0cfaae49713aee7cea6 (Verification Hash)
+            </p>
+        </div>
+    </section>
+
+    <footer class="py-10 px-6 text-center border-t border-lol-border relative z-10 text-gray-700 text-xs">
+        <p data-lang="footer_riot" class="mb-2">© 2026 Ghost Mode Project. This project is not affiliated with Riot Games.</p>
+        <p>Developed with ❤️ for privacy by <span class="text-gray-500">micio</span></p>
+    </footer>
+
+    <script>
+        const translations = {
+            ko: {
+                nav_how: "작동 원리",
+                nav_safe: "보안 안내",
+                nav_down: "다운로드",
+                hero_title: "로그아웃 없이,<br><span class='gradient-text'>완벽한 오프라인 전환</span>",
+                hero_desc: "친구 목록에는 '오프라인'으로, 실제로는 전장에. <br>누구의 방해 없이, 오직 당신의 게임에만 집중하세요.",
+                btn_switch: "오프라인으로 전환",
+                how_title: "어떻게 작동하나요?",
+                how_desc: "시스템을 건드리지 않는 안전한 네트워크 제어 방식을 사용합니다.",
+                step1_t: "채팅 서버 IP 차단",
+                step1_d: "윈도우 방화벽 규칙을 이용해 리그 오브 레전드의 <span class='text-white'>채팅 서버 IP</span>만 일시적으로 차단합니다.",
+                step2_t: "계정 및 파일 보안",
+                step2_d: "게임의 실행 파일(.exe)이나 메모리를 수정하는 '치트' 방식이 아니므로 뱅가드(Vanguard) 탐지 및 계정 정지 위험이 없습니다.",
+                step3_t: "독립된 네트워크",
+                step3_d: "채팅 서버와 게임 서버는 분리되어 있습니다. 오프라인 모드 중에도 인게임 플레이 지연율(Ping)은 0ms로 완벽하게 유지됩니다.",
+                safety_title: "백신 오진 및 보안 안내",
+                safety_p1: "본 프로그램은 <strong class='text-white font-bold'>윈도우 시스템의 방화벽 규칙을 동적으로 제어</strong>하는 기능을 포함하고 있습니다.",
+                safety_p2: "이 과정에서 일부 백신(Windows Defender 등)이 프로그램의 출처가 불분명하거나 시스템 설정을 변경하려 한다고 판단하여 <span class='text-lol-red font-semibold'>'차단 알림'</span> 또는 <span class='text-lol-red font-semibold'>'위협 탐지'</span> 메시지를 표시할 수 있습니다.",
+                safety_box: "이는 시스템 권한을 사용하는 네트워크 관리 도구에서 흔히 발생하는 <strong class='text-white font-semibold'>'오진(False Positive)'</strong> 현상이며, 본 프로그램은 어떠한 경우에도 사용자의 개인정보를 수집하거나 해로운 파일을 설치하지 않음을 약속드립니다.",
+                down_title: "지금 바로 <span class='gradient-text'>비밀스럽게</span><br>게임을 즐기세요.",
+                down_exe_p: "가장 빠르고 간편한 자동 설치 방식",
+                down_exe_btn: "v1.0.0 다운로드",
+                down_zip_p: "설치 없이 바로 실행 가능한 무설치판",
+                down_zip_btn: "파일 내려받기",
+                footer_riot: "© 2026 Ghost Mode Project. 본 프로젝트는 라이엇 게임즈와 무관합니다."
+            },
+            en: {
+                nav_how: "How It Works",
+                nav_safe: "Safety",
+                nav_down: "Download",
+                hero_title: "Go Offline,<br><span class='gradient-text'>Stay in the Game</span>",
+                hero_desc: "Appear offline while you're on the Rift. <br>Focus solely on your victory without any distractions.",
+                btn_switch: "Switch to Offline",
+                how_title: "How It Works",
+                how_desc: "Uses a secure network control method without modifying system files.",
+                step1_t: "IP Blocking",
+                step1_d: "Temporarily blocks the League of Legends <span class='text-white'>Chat Server IP</span> using Windows Firewall rules.",
+                step2_t: "Account Security",
+                step2_d: "Not a 'cheat' that modifies memory or .exe files. Safe from Vanguard detection and bans.",
+                step3_t: "Independent Network",
+                step3_d: "Chat and game servers are separate. In-game ping stays at 0ms even in offline mode.",
+                safety_title: "Safety & False Positives",
+                safety_p1: "This program <strong class='text-white font-bold'>dynamically controls Windows Firewall rules</strong> to function.",
+                safety_p2: "Some antivirus (e.g. Windows Defender) may show <span class='text-lol-red font-semibold'>'Threat Detected'</span> alerts because it modifies network settings.",
+                safety_box: "This is a common <strong class='text-white font-semibold'>'False Positive'</strong> for network management tools. We guarantee no personal data is collected.",
+                down_title: "Ready to <span class='gradient-text'>Go Invisible?</span><br>Start your journey now.",
+                down_exe_p: "Fastest and easiest way to install.",
+                down_exe_btn: "Download v1.0.0",
+                down_zip_p: "Portable version, no installation required.",
+                down_zip_btn: "Get ZIP File",
+                footer_riot: "© 2026 Ghost Mode Project. This project is not affiliated with Riot Games."
+            }
+        };
+
+        const langSelect = document.getElementById('lang-select');
+        
+        langSelect.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            // HTML 언어 속성 변경
+            document.documentElement.lang = lang;
+        });
+    </script>
+</body>
+</html>

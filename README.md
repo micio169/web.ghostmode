@@ -1,4 +1,4 @@
-# 👻 Ghost Mode (Unofficial)
+# 👻 Ghost Mode (Unofficial) / WEBSITE
 
 > **Appear offline in League of Legends by managing firewall-based IP connections.**
 

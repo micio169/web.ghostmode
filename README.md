@@ -12,7 +12,7 @@ Unlike official client features, Ghost Mode functions by **blocking specific IP 
 * **Simple Toggle:** Easily switch between "Online" and "Ghost Mode" with a single click.
 * **Lightweight & Open Source:** A transparent, community-driven tool for the player base.
 
-[WEBSITE](https://micio169.github.io/web.ghostmode/)
+[WEBSITE LINK](https://micio169.github.io/web.ghostmode/)
 
 ---
 **⚠️ Disclaimer**

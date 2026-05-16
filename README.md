@@ -1,19 +1,19 @@
-# 👻 Ghost Mode (Unofficial) / [WEBSITE](https://micio169.github.io/web.ghostmode/)
+# 👻 고스트 모드 (비공식) / [웹사이트](https://micio169.github.io/web.ghostmode/)
 
-> **Appear offline in League of Legends by managing firewall-based IP connections.**
+> **방화벽 기반의 IP 연결 관리를 통해 리그 오브 레전드에서 오프라인으로 표시되도록 설정하세요.**
 
-Welcome to the official repository for **Ghost Mode**, an unofficial utility designed for League of Legends players who value their privacy. 
+자신의 개인정보와 사생활을 중요하게 생각하는 리그 오브 레전드 플레이어들을 위해 개발된 비공식 유틸리티, **고스트 모드(Ghost Mode)**의 공식 리포지토리에 오신 것을 환영합니다. 
 
-### 🔍 How it Works
-Unlike official client features, Ghost Mode functions by **blocking specific IP connections via your system firewall**. This prevents the League of Legends chat server from broadcasting your online status to others, effectively making you appear "Offline" while you remain fully connected to the game.
+### 🔍 작동 원리
+공식 클라이언트 기능과 달리, 고스트 모드는 **시스템 방화벽을 통해 특정 IP 연결을 차단**하는 방식으로 작동합니다. 이를 통해 리그 오브 레전드 채팅 서버가 귀하의 온라인 상태를 다른 사람에게 알리는 것을 방지하며, 결과적으로 게임에는 정상적으로 접속해 있으면서도 다른 사람들에게는 "오프라인"으로 보이게 만듭니다.
 
-### ✨ Key Features
-* **Firewall-Based Privacy:** Securely blocks social presence without interfering with actual gameplay.
-* **Simple Toggle:** Easily switch between "Online" and "Ghost Mode" with a single click.
-* **Lightweight & Open Source:** A transparent, community-driven tool for the player base.
+### ✨ 주요 기능
+* **방화벽 기반 프라이버시:** 실제 게임 플레이를 방해하지 않으면서 소셜 접속 상태만 안전하게 차단합니다.
+* **간편한 토글:** 클릭 한 번으로 "온라인"과 "고스트 모드" 상태를 손쉽게 전환할 수 있습니다.
+* **가볍고 투명한 오픈 소스:** 플레이어분들을 위해 투명하게 운영되는 커뮤니티 주도의 가벼운 도구입니다.
 
-[WEBSITE LINK](https://micio169.github.io/web.ghostmode/)
+[웹사이트 링크](https://micio169.github.io/web.ghostmode/)
 
 ---
-**⚠️ Disclaimer**
-*This is an unofficial project and is not affiliated with, authorized, or endorsed by Riot Games. Use at your own discretion.*
+**⚠️ 면책 조항**
+*본 프로젝트는 비공식 프로젝트이며 Riot Games와 제휴, 승인 또는 보증되지 않았습니다. 사용에 따른 책임은 본인에게 있습니다.*
